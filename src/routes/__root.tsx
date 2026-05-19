@@ -7,6 +7,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { Toaster } from "sonner";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 import appCss from "../styles.css?url";
 
@@ -72,14 +75,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Vogue Esthetics — Skin, Hair & Laser Experts | Bahria Town, Rawalpindi" },
+      { name: "description", content: "Premium aesthetic clinic in Bahria Town, Rawalpindi. Pico Laser, HIFU, Hydrafacial, Botox, Fillers, PRP and more. Book your appointment today." },
+      { name: "author", content: "Vogue Esthetics" },
+      { property: "og:title", content: "Vogue Esthetics — Skin, Hair & Laser Experts" },
+      { property: "og:description", content: "Premium aesthetic care in Bahria Town. Where science meets timeless beauty." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
@@ -113,7 +115,14 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="flex min-h-screen flex-col bg-background">
+        <Header />
+        <main className="flex-1">
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
+      <Toaster position="top-center" richColors />
     </QueryClientProvider>
   );
 }
