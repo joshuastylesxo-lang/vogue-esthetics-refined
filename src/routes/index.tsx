@@ -7,6 +7,8 @@ import t3 from "@/assets/treatment-3.jpg";
 import interior from "@/assets/clinic-interior.png";
 import entrance from "@/assets/clinic-entrance.png";
 import { SERVICES } from "@/lib/services";
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,41 +36,37 @@ const reviews = [
 function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={hero} alt="Vogue Esthetics interior" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
-        </div>
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-10 py-28 md:py-40 lg:py-48 grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="divider-gold reveal">Bahria Town · Rawalpindi</div>
-            <h1 className="mt-6 font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-charcoal reveal delay-100">
-              Timeless beauty,<br />
-              <span className="italic text-gold-gradient">crafted with science.</span>
-            </h1>
-            <p className="mt-7 max-w-xl text-lg text-charcoal/70 leading-relaxed reveal delay-200">
-              Bahria Town's premier aesthetic destination for skin, hair & laser
-              excellence — where every treatment is tailored, every detail is
-              considered, and every client leaves radiant.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-4 reveal delay-300">
-              <Link to="/book" className="btn-gold"><span>Book Appointment <ArrowRight className="h-4 w-4" /></span></Link>
-              <Link to="/services" className="btn-outline-gold">Explore Services</Link>
-            </div>
-            <div className="mt-12 flex flex-wrap gap-8 reveal delay-400">
-              <Stat n="4.3★" l="Google rated" />
-              <Stat n="13+" l="Premium services" />
-              <Stat n="24/7" l="Open hours" />
-            </div>
-          </div>
-          <div className="hidden lg:block float-soft">
-            <div className="relative ring-gold-soft shadow-luxe overflow-hidden hover-zoom card-shine">
-              <img src={interior} alt="Vogue Esthetics clinic interior" className="w-full h-[560px] object-cover" />
-            </div>
-          </div>
+      {/* HERO — Geometric */}
+      <section className="relative">
+        <HeroGeometric
+          badge="Vogue Esthetics · Bahria Town"
+          title1="Timeless beauty,"
+          title2="crafted with science."
+          description="Bahria Town's premier aesthetic destination for skin, hair & laser excellence — tailored treatments, considered details, radiant results."
+        />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-wrap gap-4 justify-center">
+          <Link to="/book" className="btn-gold"><span>Book Appointment <ArrowRight className="h-4 w-4" /></span></Link>
+          <Link to="/services" className="btn-outline-gold">Explore Services</Link>
         </div>
       </section>
+
+      {/* SCROLL REVEAL — Clinic showcase */}
+      <section className="bg-cream-deep">
+        <ContainerScroll
+          titleComponent={
+            <>
+              <div className="divider-gold">Step inside</div>
+              <h2 className="mt-5 font-display text-4xl md:text-6xl text-charcoal">
+                A clinic designed to <br />
+                <span className="italic text-gold-gradient">elevate your senses.</span>
+              </h2>
+            </>
+          }
+        >
+          <img src={interior} alt="Vogue Esthetics clinic interior" className="mx-auto rounded-2xl object-cover h-full w-full" draggable={false} />
+        </ContainerScroll>
+      </section>
+
 
       {/* MARQUEE / VALUE STRIP */}
       <section className="bg-charcoal text-cream py-6 overflow-hidden border-y border-gold/20">
