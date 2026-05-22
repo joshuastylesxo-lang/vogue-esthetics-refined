@@ -7,6 +7,8 @@ import t3 from "@/assets/treatment-3.jpg";
 import interior from "@/assets/clinic-interior.png";
 import entrance from "@/assets/clinic-entrance.png";
 import { SERVICES } from "@/lib/services";
+import { HeroGeometric } from "@/components/ui/shape-landing-hero";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 
 export const Route = createFileRoute("/")({
   head: () => ({
